@@ -7,15 +7,15 @@ import { axiosEpisodeTypes } from '../../type';
 import CustomSpinner from '../components/CustomSpinner';
 import CustomError from '../components/CustomError';
 import Layout from '../components/Layout';
-import useInitialEpisodes from '../hooks/useInitialEpisodes';
 import EpisodeCardWrapper from '../components/EpisodeCardWrapper';
+import useInitialEpisodes from '../hooks/useInitialEpisodes';
 
 function Episodes() {
   const [episodeList, setEpisodeList] = useState<axiosEpisodeTypes>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);
 
-  useInitialEpisodes({ setEpisodeList, setLoading, setError });
+  useInitialEpisodes({ setDataList: setEpisodeList, setLoading, setError });
 
   const loadMoreEpisodes = async () => {
     try {
