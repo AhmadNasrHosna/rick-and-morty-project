@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { axiosCharactersTypes } from '../../type';
 
-const FeatureCard = ({ character }: { character: string }) => {
+const CharacterFeatureCard = ({ character }: { character: string }) => {
   const [characterData, setCharacterData] = useState<axiosCharactersTypes>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);
@@ -42,14 +42,7 @@ const FeatureCard = ({ character }: { character: string }) => {
       <Image fallbackSrc={'/static/images/300x300.png'} src={characterData?.image} loading="lazy" />
 
       <Box>
-        <Box
-          d="flex"
-          alignItems="flex-start"
-          maxWidth="300px"
-          padding="1rem"
-          borderX="0.3px solid black"
-          borderBottom="1px solid black"
-        >
+        <Box d="flex" alignItems="flex-start" maxWidth="300px" padding="1rem">
           <Box color="gray.500" fontWeight="semibold" letterSpacing="wide" fontSize="xs">
             <Heading fontSize="1rem">{characterData?.name}</Heading>
             <Text>
@@ -64,4 +57,4 @@ const FeatureCard = ({ character }: { character: string }) => {
   );
 };
 
-export default FeatureCard;
+export default CharacterFeatureCard;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Text, SimpleGrid, Button } from '@chakra-ui/react';
 
-import FeatureCard from './FeatureCard';
+import CharacterFeatureCard from './CharacterFeatureCard';
 
-type CardWrapperProps = {
+type EpisodeCardWrapperProps = {
   id: number;
   name: string;
   air_date: string;
@@ -13,7 +13,13 @@ type CardWrapperProps = {
   created?: string;
 };
 
-const CardWrapper = ({ id, name, air_date, episode, characters }: CardWrapperProps) => {
+const EpisodeCardWrapper = ({
+  id,
+  name,
+  air_date,
+  episode,
+  characters,
+}: EpisodeCardWrapperProps) => {
   const [loadCount, setLoadCount] = useState(6);
   const [counter, setCounter] = useState(1);
 
@@ -41,7 +47,7 @@ const CardWrapper = ({ id, name, air_date, episode, characters }: CardWrapperPro
       </Box>
       <SimpleGrid columns={3} spacing={4} padding="1rem">
         {characters.slice(0, loadCount).map((character) => (
-          <FeatureCard key={character} character={character} />
+          <CharacterFeatureCard key={character} character={character} />
         ))}
         <Box />
         <Button
@@ -58,4 +64,4 @@ const CardWrapper = ({ id, name, air_date, episode, characters }: CardWrapperPro
   );
 };
 
-export default CardWrapper;
+export default EpisodeCardWrapper;
