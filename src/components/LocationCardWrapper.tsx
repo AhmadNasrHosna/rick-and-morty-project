@@ -2,16 +2,9 @@ import React, { useState } from 'react';
 import { Box, Text, SimpleGrid, Button } from '@chakra-ui/react';
 
 import CharacterFeatureCard from './CharacterFeatureCard';
+import { LocationCardWrapperProps } from '../../type';
 
-type EpisodeCardWrapperProps = {
-  id: number;
-  name: string;
-  type: string;
-  dimension: string;
-  residents: string[];
-};
-
-const EpisodeCardWrapper = ({ id, name, type, dimension, residents }: EpisodeCardWrapperProps) => {
+const EpisodeCardWrapper = ({ id, name, type, dimension, residents }: LocationCardWrapperProps) => {
   const [loadCount, setLoadCount] = useState(6);
   const [counter, setCounter] = useState(1);
 
@@ -25,14 +18,19 @@ const EpisodeCardWrapper = ({ id, name, type, dimension, residents }: EpisodeCar
   };
 
   return (
-    <Box borderRadius="0.3rem" border="1px solid black" marginBottom="2rem">
+    <Box
+      borderRadius="0.3rem"
+      border="1px solid black"
+      marginBottom="2rem"
+      data-testid="location-card-wrapper"
+    >
       <Box borderBottom="1px solid black" padding="1rem">
-        <Text>
+        <Text data-testid="location-card-wrapper-name">
           #{id}-{name}
         </Text>
       </Box>
       <Box padding="1rem">
-        <Text>
+        <Text data-testid="location-card-wrapper-name-explanation">
           This is a {type} located in {dimension}. There are total of {residents.length} residents
           that are originated from here.
         </Text>
@@ -47,6 +45,7 @@ const EpisodeCardWrapper = ({ id, name, type, dimension, residents }: EpisodeCar
           size="lg"
           onClick={handleLoadMore}
           display={counter === totalPage || residents.length === 0 ? 'none' : ''}
+          data-testid="load-more-button"
         >
           Load More
         </Button>

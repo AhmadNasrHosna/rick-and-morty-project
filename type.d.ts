@@ -57,3 +57,11 @@ export type EpisodeCardWrapperProps = {
   url?: string;
   created?: string;
 };
+
+type LocationCardWrapperProps = {
+  id: number;
+  name: string;
+  type: string;
+  dimension: string;
+  residents: string[];
+};

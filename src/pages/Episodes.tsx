@@ -54,16 +54,11 @@ function Episodes() {
         hasMore={!!episodeList?.info.next}
         loader={<CustomSpinner key={0} />}
       >
-        {loading ? (
-          <CustomSpinner />
-        ) : episodeList ? (
-          episodeList.results?.map((episode) => (
-            <EpisodeCardWrapper {...episode} key={`${episode.id}${episode.name}`} />
-          ))
-        ) : (
-          <Box />
-        )}
+        {episodeList?.results?.map((episode) => (
+          <EpisodeCardWrapper {...episode} key={`${episode.id}${episode.name}`} />
+        ))}
       </InfiniteScroll>
+      <Box data-testid="episodes-infinite-scroll-bottom"></Box>
     </Layout>
   );
 }

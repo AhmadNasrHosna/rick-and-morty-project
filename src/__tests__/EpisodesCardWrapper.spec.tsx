@@ -63,6 +63,24 @@ test('Renders episodes card wrapper explanation', async () => {
   expect(episodeCardWrapperExplanation).toHaveTextContent(fakeData.episode);
 });
 
+test('Renders episodes card wrapper explanation with correct date', async () => {
+  render(<EpisodeCardWrapper {...fakeData} />);
+
+  const episodeCardWrapperExplanation = await screen.findByTestId(
+    'episode-card-wrapper-name-explanation',
+  );
+  expect(episodeCardWrapperExplanation).toHaveTextContent(fakeData.air_date);
+});
+
+test('Renders episodes card wrapper explanation with correct featured characters', async () => {
+  render(<EpisodeCardWrapper {...fakeData} />);
+
+  const episodeCardWrapperExplanation = await screen.findByTestId(
+    'episode-card-wrapper-name-explanation',
+  );
+  expect(episodeCardWrapperExplanation).toHaveTextContent(fakeData.characters.length.toString());
+});
+
 test('Before load more onClick', async () => {
   await act(async () => {
     render(<EpisodeCardWrapper {...fakeDataForLoadMore} />);

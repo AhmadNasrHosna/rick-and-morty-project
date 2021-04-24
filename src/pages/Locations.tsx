@@ -47,6 +47,7 @@ function Episodes() {
   return (
     <Layout>
       <InfiniteScroll
+        data-testid="location-infinite-scroll"
         pageStart={0}
         loadMore={loadMoreEpisodes}
         hasMore={!!locationList?.info.next}
