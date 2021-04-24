@@ -23,6 +23,7 @@ const Navbar = () => {
           }}
           exact
           activeStyle={{ color: '#127ce8' }}
+          data-testid="episodes-nav-link"
         >
           By Episodes
         </NavLink>
@@ -36,6 +37,7 @@ const Navbar = () => {
           }}
           exact
           activeStyle={{ color: '#127ce8' }}
+          data-testid="locations-nav-link"
         >
           By Locations
         </NavLink>
