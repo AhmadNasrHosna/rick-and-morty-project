@@ -9,6 +9,7 @@ import CustomError from '../components/CustomError';
 import Layout from '../components/Layout';
 import EpisodeCardWrapper from '../components/EpisodeCardWrapper';
 import useInitialEpisodes from '../hooks/useInitialEpisodes';
+import { Box } from '@chakra-ui/react';
 
 function Episodes() {
   const [episodeList, setEpisodeList] = useState<axiosEpisodeTypes>();
@@ -47,14 +48,21 @@ function Episodes() {
   return (
     <Layout>
       <InfiniteScroll
+        data-testid="episodes-infinite-scroll"
         pageStart={0}
         loadMore={loadMoreEpisodes}
         hasMore={!!episodeList?.info.next}
         loader={<CustomSpinner key={0} />}
       >
-        {episodeList?.results?.map((episode) => (
-          <EpisodeCardWrapper {...episode} key={`${episode.id}${episode.name}`} />
-        ))}
+        {loading ? (
+          <CustomSpinner />
+        ) : episodeList ? (
+          episodeList.results?.map((episode) => (
+            <EpisodeCardWrapper {...episode} key={`${episode.id}${episode.name}`} />
+          ))
+        ) : (
+          <Box />
+        )}
       </InfiniteScroll>
     </Layout>
   );

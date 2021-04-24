@@ -47,3 +47,13 @@ export type axiosCharactersTypes = {
   status: string;
   image: string;
 };
+
+export type EpisodeCardWrapperProps = {
+  id: number;
+  name: string;
+  air_date: string;
+  episode: string;
+  characters: string[];
+  url?: string;
+  created?: string;
+};

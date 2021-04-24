@@ -2,16 +2,7 @@ import React, { useState } from 'react';
 import { Box, Text, SimpleGrid, Button } from '@chakra-ui/react';
 
 import CharacterFeatureCard from './CharacterFeatureCard';
-
-type EpisodeCardWrapperProps = {
-  id: number;
-  name: string;
-  air_date: string;
-  episode: string;
-  characters: string[];
-  url?: string;
-  created?: string;
-};
+import { EpisodeCardWrapperProps } from '../../type';
 
 const EpisodeCardWrapper = ({
   id,
@@ -33,14 +24,19 @@ const EpisodeCardWrapper = ({
   };
 
   return (
-    <Box borderRadius="0.3rem" border="1px solid black" marginBottom="2rem">
+    <Box
+      borderRadius="0.3rem"
+      border="1px solid black"
+      marginBottom="2rem"
+      data-testid="episode-card-wrapper"
+    >
       <Box borderBottom="1px solid black" padding="1rem">
-        <Text>
+        <Text data-testid="episode-card-wrapper-name">
           #{id}-{name}
         </Text>
       </Box>
       <Box padding="1rem">
-        <Text>
+        <Text data-testid="episode-card-wrapper-name-explanation">
           This is {episode}st episode in {id}st session. It was aired on {air_date}. There are total
           of {characters.length} featured characters in this episode.
         </Text>
@@ -55,6 +51,7 @@ const EpisodeCardWrapper = ({
           size="lg"
           onClick={handleLoadMore}
           display={counter === totalPage ? 'none' : ''}
+          data-testid="load-more-button"
         >
           Load More
         </Button>
