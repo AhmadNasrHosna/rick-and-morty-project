@@ -2,23 +2,22 @@ import React, { useEffect } from 'react';
 
 import axios from 'axios';
 
-import { EPISODES_URL } from '../constants/urls';
-import { axiosEpisodeTypes } from '../../type';
-
-const useInitialEpisodes = ({
+const useInitialData = <T>({
   setDataList,
   setError,
   setLoading,
+  url,
 }: {
-  setDataList: React.Dispatch<React.SetStateAction<axiosEpisodeTypes | undefined>>;
+  setDataList: React.Dispatch<React.SetStateAction<T | undefined>>;
   setError: React.Dispatch<React.SetStateAction<string | undefined>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  url: string;
 }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`${EPISODES_URL}`);
+        const { data } = await axios.get<T>(`${url}`);
         setLoading(false);
         setDataList(data);
       } catch (error) {
@@ -27,7 +26,7 @@ const useInitialEpisodes = ({
       }
     };
     fetchData();
-  }, []);
+  }, [setDataList, setError, setLoading, url]);
 };
 
-export default useInitialEpisodes;
+export default useInitialData;

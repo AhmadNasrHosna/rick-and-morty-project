@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box } from '@chakra-ui/react';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from 'axios';
@@ -8,15 +9,20 @@ import CustomSpinner from '../components/CustomSpinner';
 import CustomError from '../components/CustomError';
 import Layout from '../components/Layout';
 import EpisodeCardWrapper from '../components/EpisodeCardWrapper';
-import useInitialEpisodes from '../hooks/useInitialEpisodes';
-import { Box } from '@chakra-ui/react';
+import useInitialData from '../hooks/useInitialData';
+import { EPISODES_URL } from '../constants/urls';
 
 function Episodes() {
   const [episodeList, setEpisodeList] = useState<axiosEpisodeTypes>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);
 
-  useInitialEpisodes({ setDataList: setEpisodeList, setLoading, setError });
+  useInitialData<axiosEpisodeTypes>({
+    setDataList: setEpisodeList,
+    setLoading,
+    setError,
+    url: EPISODES_URL,
+  });
 
   const loadMoreEpisodes = async () => {
     try {

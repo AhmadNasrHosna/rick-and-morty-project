@@ -26,13 +26,13 @@ const EpisodeCardWrapper = ({
   return (
     <Box
       borderRadius="0.3rem"
-      border="1px solid black"
+      border="1px solid #272626"
       marginBottom="2rem"
       data-testid="episode-card-wrapper"
     >
-      <Box borderBottom="1px solid black" padding="1rem">
+      <Box borderBottom="1px solid #272626" padding="1rem" backgroundColor="rgb(0 0 0 / 24%)">
         <Text data-testid="episode-card-wrapper-name">
-          #{id}-{name}
+          #{id} - {name}
         </Text>
       </Box>
       <Box padding="1rem">

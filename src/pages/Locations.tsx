@@ -8,14 +8,20 @@ import CustomSpinner from '../components/CustomSpinner';
 import CustomError from '../components/CustomError';
 import Layout from '../components/Layout';
 import LocationCardWrapper from '../components/LocationCardWrapper';
-import useInitialLocations from '../hooks/useInitialLocations';
+import useInitialData from '../hooks/useInitialData';
+import { LOCATION_URL } from '../constants/urls';
 
-function Episodes() {
+function Locations() {
   const [locationList, setLocationList] = useState<axiosLocationTypes>();
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(false);
 
-  useInitialLocations({ setDataList: setLocationList, setLoading, setError });
+  useInitialData<axiosLocationTypes>({
+    setDataList: setLocationList,
+    setLoading,
+    setError,
+    url: LOCATION_URL,
+  });
 
   const loadMoreEpisodes = async () => {
     try {
@@ -61,4 +67,4 @@ function Episodes() {
   );
 }
 
-export default Episodes;
+export default Locations;

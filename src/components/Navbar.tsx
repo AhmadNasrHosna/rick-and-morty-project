@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Button } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 import * as ROUTES from '../constants/routes';
@@ -10,15 +10,36 @@ const Navbar = () => {
       justifyContent="flex-start"
       width="100%"
       marginBottom="1rem"
-      borderBottom="1px solid black"
+      borderBottom="1px solid #272626"
       padding="1rem"
+      backgroundColor="#c2c2c2"
     >
-      <Button colorScheme="blue" marginRight="1rem">
-        <NavLink to={ROUTES.EPISODES}>Episodes</NavLink>
-      </Button>
-      <Button colorScheme="blue">
-        <NavLink to={ROUTES.LOCATIONS}>Locations</NavLink>
-      </Button>
+      <Box marginRight="1rem" paddingX="1rem">
+        <NavLink
+          to={ROUTES.EPISODES}
+          style={{
+            fontSize: '1.1rem',
+            fontWeight: 500,
+          }}
+          exact
+          activeStyle={{ color: '#127ce8' }}
+        >
+          By Episodes
+        </NavLink>
+      </Box>
+      <Box paddingX="1rem">
+        <NavLink
+          to={ROUTES.LOCATIONS}
+          style={{
+            fontSize: '1.1rem',
+            fontWeight: 500,
+          }}
+          exact
+          activeStyle={{ color: '#127ce8' }}
+        >
+          By Locations
+        </NavLink>
+      </Box>
     </Flex>
   );
 };

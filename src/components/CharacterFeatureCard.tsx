@@ -1,29 +1,9 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { Box, Flex, Heading, Image, Spinner, Text } from '@chakra-ui/react';
-import axios from 'axios';
 
-import { axiosCharactersTypes } from '../../type';
+import useFetchCharacters from '../hooks/useFetchCharacters';
 
 const CharacterFeatureCard = ({ character }: { character: string }) => {
-  const [characterData, setCharacterData] = useState<axiosCharactersTypes>();
-  const [error, setError] = useState<string>();
-  const [loading, setLoading] = useState(false);
-
-  const fetchCharacters = useCallback(async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get<axiosCharactersTypes>(character);
-      setLoading(false);
-      setCharacterData(data);
-    } catch (error) {
-      setError(error);
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchCharacters();
-  }, []);
+  const { characterData, error, loading } = useFetchCharacters(character);
 
   if (loading) {
     <Flex width="100%" justifyContent="flex-start" alignItems="center" flexDirection="column">
